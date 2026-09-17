@@ -37,4 +37,4 @@ def decision(row: pd.Series) -> str:
     if row.action < -0.05: return "Discharge Battery"
     return "Hold Battery"
 view = records[["hour", "solar", "load", "soc", "price", "action"]].copy(); view["decision"] = records.apply(decision, axis=1); view["soc"] = (view["soc"] * 100).round(1); view.columns = ["Hour", "Solar (kWh)", "Load (kWh)", "Battery SOC (%)", "Price (₹/kWh)", "Action", "RL Agent Decision"]
-st.dataframe(view, use_container_width=True, hide_index=True)
+st.dataframe(view, width="stretch", hide_index=True)
